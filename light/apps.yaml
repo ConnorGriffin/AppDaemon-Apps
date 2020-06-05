@@ -1,0 +1,7 @@
+---
+light_double_tap:
+  module: light_double_tap
+  class: LightDoubleTap
+  lights:
+    - connors_office_light
+  constrain_input_boolean: input_boolean.light_double_tap_automation
