@@ -1,0 +1,11 @@
+---
+smart_plug_timer:
+  module: smart_plug_timer
+  class: SmartPlugTimer
+  timers:
+    - switch: switch.smart_plug_1_switch
+      constrain_input_boolean: input_boolean.smart_plug_1_timer
+      start_time: input_datetime.smart_plug_1_timer_start_time
+      end_time: input_datetime.smart_plug_1_timer_end_time
+      
+  
