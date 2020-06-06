@@ -7,5 +7,7 @@ smart_plug_timer:
       constrain_input_boolean: input_boolean.smart_plug_1_timer
       start_time: input_datetime.smart_plug_1_timer_start_time
       end_time: input_datetime.smart_plug_1_timer_end_time
-      
-  
+    - switch: switch.smart_plug_2_switch
+      constrain_input_boolean: input_boolean.smart_plug_2_timer
+      start_time: input_datetime.smart_plug_2_timer_start_time
+      end_time: input_datetime.smart_plug_2_timer_end_time

@@ -2,6 +2,79 @@
 light_double_tap:
   module: light_double_tap
   class: LightDoubleTap
+  constrain_input_boolean: input_boolean.light_double_tap_automation
   lights:
     - connors_office_light
-  constrain_input_boolean: input_boolean.light_double_tap_automation
+    - dianas_office_light
+    - bedroom_light
+    - hallway_light
+    - bathroom_light
+    - dining_room_light
+
+light_brightness:
+  module: light_brightness
+  class: LightBrightness
+  constrain_input_boolean: input_boolean.light_brightness_automation
+  # These defaults can be overridden at the entity level
+  defaults:
+    # Brightness defaults (used in double-taps and schedules)
+    max_brightness: 100
+    min_brightness: 10
+    # How long a light needs to be on/off before another on/off state will be listened for, deals with buggy GE dimmer reporting
+    on_threshold: 3
+    off_threshold: 3
+    brightness_schedule:
+      - pct: 75
+        start: "9:00:00"
+        end: "10:00:00"
+      - pct: max_brightness
+        start: "12:00:00"
+        end: "16:00:00"
+      - pct: 70
+        start: "18:00:00"
+        end: "18:00:00"
+      - pct: 15
+        start: "21:00:00"
+        end: "22:30:00"
+      - pct: min_brightness
+        start: "00:00:00"
+        end: "06:00:00"
+  # Entity specific settings
+  entities:
+    - name: connors_office_light
+    - name: dianas_office_light
+      min_brightness: 8
+    - name: bathroom_light
+      min_brightness: 15
+    - name: hallway_light
+      min_brightness: 5
+      brightness_schedule:
+        - pct: 55
+          start: "9:00:00"
+          end: "10:00:00"
+        - pct: max_brightness
+          start: "12:00:00"
+          end: "16:00:00"
+        - pct: 40
+          start: "18:00:00"
+          end: "18:00:00"
+        - pct: min_brightness
+          start: "21:00:00"
+          end: "06:00:00"
+    - name: dining_room_light
+      min_brightness: 13
+      brightness_schedule:
+        - pct: 55
+          start: "9:00:00"
+          end: "10:00:00"
+        - pct: max_brightness
+          start: "12:00:00"
+          end: "16:00:00"
+        - pct: 40
+          start: "18:00:00"
+          end: "18:00:00"
+        - pct: min_brightness
+          start: "21:00:00"
+          end: "06:00:00"
+    - name: bedroom_light
+      min_brightness: 8.5
